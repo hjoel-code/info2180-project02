@@ -5,4 +5,4 @@ This is Group Project02
 
 ***
 These are the following group members:
-* Joel Henry *620127501
+* Joel Henry 620127501
