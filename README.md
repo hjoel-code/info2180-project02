@@ -1,4 +1,8 @@
 # info2180-project02
 
-This is Project 2 for:
-*Joel Henry
+
+This is Group Project02
+
+***
+These are the following group members:
+* Joel Henry *620127501
