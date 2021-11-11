@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS bugme;
 
 
--- Creation of the database
+-- Creation of the bugme database
 CREATE DATABASE bugme;
 
 
