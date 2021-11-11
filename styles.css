@@ -1,0 +1,24 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    padding: 10px 30px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 100%;
+}
+
+main .side-menu {
+    background: rgb(218, 218, 218);
+    min-height: 95vh;
+}
+
+main .content {
+    padding: 30px;
+}
