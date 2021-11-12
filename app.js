@@ -80,6 +80,7 @@ function reload_page(page_title, content) {
     $('#page-content').html(content);
 }
 
+
 });
 
 
