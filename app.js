@@ -81,6 +81,8 @@ function reload_page(page_title, content) {
 }
 
 
+alert(false, "Something went wrong")
+
 });
 
 

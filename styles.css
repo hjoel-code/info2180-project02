@@ -76,7 +76,7 @@ main .content {
     z-index: 100;
     bottom: 2em;
     right: 2em;
-    width: 30vw;
+    width: 15vw;
     padding: 10px 10px;
     border-radius: 10px;
     opacity: 0;
@@ -94,7 +94,7 @@ main .content {
 
 .alert-toaster.error {
     background: rgb(247, 219, 219);
-    border-left: 5px solid rgb(207, 24, 24);
+    border-top: 5px solid rgb(207, 24, 24);
     color: rgb(49, 20, 20);
 }
 
@@ -102,12 +102,12 @@ main .content {
     color: rgb(51, 16, 16);
 }
 
-.alert-toaster.error h5 {
-    color: rgb(12, 26, 39);
+.alert-toaster.success h5 {
+    color: rgb(6, 20, 10);
 }
 
 .alert-toaster.success {
-    background: rgb(177, 202, 230);
-    border-left: 5px solid rgb(33, 56, 90);
-    color: rgb(12, 26, 39);
+    background: rgb(207, 243, 216);
+    border-top: 5px solid rgb(10, 145, 44);
+    color: rgb(6, 20, 10);
 }
