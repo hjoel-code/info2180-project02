@@ -52,18 +52,20 @@ class Auth {
         $response = $this->db->select("SELECT * FROM `users` WHERE email = '$email' AND password = MD5('$password')");
 
         if ($response['state']) {
+            echo json_encode($response);
+            
             if ($response['count'] > 0) {
                 $data = $response['result']->fetch_assoc();
-
+                echo json_encode($data);
                 $this->user = new User();
                 $this->user->set_user($data['id'], $data['firstname'], $data['lastname'], $data['email'], $data['date_joined']);
                 
                 $_SESSION["auth_state"] = true;
-                $_SESISON["auth"] = serialize($this);
+                $_SESSION["auth"] = serialize($this);
 
                 return true;
             } else {
-                return true;
+                return false;
             }
         } else {
             return false;
@@ -76,7 +78,6 @@ class Auth {
 
         $this->user = null;
         $_SESSION["auth_state"] = false;
-        $_SESSION['auth'] = null;
 
     }
 

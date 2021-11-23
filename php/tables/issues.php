@@ -1,8 +1,5 @@
 <?php 
 
-require './php/config.php';
-require './php/auth/auth.php';
-
 function table_rows($data) {
     foreach ($data as $row) {
         echo "<tr>";

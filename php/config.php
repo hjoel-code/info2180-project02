@@ -5,8 +5,8 @@ class DatabaseSQL {
     public $conn = null;
 
     public $server = "localhost";
-    public $username = "project02";
-    public $password = "project02-123";
+    public $username = "project-2";
+    public $password = "project-123";
     public $db = "bugme";
 
     /**
@@ -31,6 +31,7 @@ class DatabaseSQL {
         }
 
         $results = $this->conn->query($sql);
+
 
         $response['count'] = $results->num_rows;
         $response['result'] = $results;
