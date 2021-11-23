@@ -28,6 +28,10 @@ class User {
 
     }
 
+    function get_fullname() {
+        return $this->firstname." ".$this->lastname;
+    }
+
 }
 
 class Auth {
@@ -52,11 +56,8 @@ class Auth {
         $response = $this->db->select("SELECT * FROM `users` WHERE email = '$email' AND password = MD5('$password')");
 
         if ($response['state']) {
-            echo json_encode($response);
-            
             if ($response['count'] > 0) {
                 $data = $response['result']->fetch_assoc();
-                echo json_encode($data);
                 $this->user = new User();
                 $this->user->set_user($data['id'], $data['firstname'], $data['lastname'], $data['email'], $data['date_joined']);
                 
@@ -91,8 +92,8 @@ class Auth {
      * @return Boolean
      */
     public function sign_up($firstname, $lastname, $email, $password) {
-        $response = $this->db->insert("INSERT INTO users (firstname, lastname, email, password, date_joined) VALUES ('$firstname', '$lastname', '$email', MD5('$password'), ADDTIME(CURRENT_DATE(), CURRENT_TIME())");
-    
+        $response = $this->db->insert("INSERT INTO Users 
+        VALUES (DEFAULT, '".$firstname."', '".$lastname."', MD5('".$password."'), '".$email."', ADDTIME(CURRENT_DATE(), CURRENT_TIME()));");
         return $response;
     }
 }

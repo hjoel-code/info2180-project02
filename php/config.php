@@ -45,14 +45,16 @@ class DatabaseSQL {
     }
 
     function insert($sql) {
+        echo json_encode($sql);
         $this->conn = new mysqli($this->server,  $this->username, $this->password, $this->db);
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
             return false;
         }
-        $this->conn->query($sql);
+        $stmt = $this->conn->query($sql);
         $this->conn->close();
-        return true;
+        
+        return $stmt;
     }
 }
 
