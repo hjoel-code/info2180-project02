@@ -33,11 +33,9 @@ main .side-menu {
 
 .side-menu ul li {
     display: block;
-    padding: 20px 20px;
-    margin: 20px 0;
+    padding: 10px 10px;
+    margin: 10px 0;
     background: rgba(21, 76, 138, 0.212);
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
     transition: .5s;
     border-right: 5px solid rgb(25, 105, 197);
 }

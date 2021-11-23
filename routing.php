@@ -2,7 +2,15 @@
 
 session_start();
 
-if ($_SESSION['auth_state']) {
+$isState = isset($_SESSION['auth_state']);
+$state = false;
+
+
+if ($isState) {
+    $state = $_SESSION['auth_state'];
+}
+
+if ($state) {
     $routes = array(
         ' ' => './php/dashboard.php',
         'dashboard' => './php/dashboard.php',
