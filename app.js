@@ -86,10 +86,12 @@ function reload_page(page_title, content) {
     }
 }
 
-$('#dashboard').on('click', async e => {
-    let response  = await ajax_methods('GET', './routing.php', { context: 'dashboard' })
+$('.menu-link').on('click', async e => {
+    e.preventDefault();
+    let response  = await ajax_methods('GET', './routing.php', { context: e.currentTarget.id })
     if (response['error'] == null) {
         let data = response['data'];
+
         let content = JSON.parse(data);
         reload_page(content.title, content.content);
     }

@@ -4,13 +4,13 @@
         <h1>Issues</h1>
     </div>
     <div class="create-issue-btn-container">
-        <a href="/" class="create-issue-btn">Create New Issue</a>
+        <button class="create-issue-btn">Create New Issue</button>
     </div>
 </div>
 
 <div class="filter-tab-container">
-    <div class="filter-lable">
-        <h6>Filter by:</h6>
+    <div class="filter-label">
+        <label>Filter by:</label>
     </div>
     <div class="filter-btn-group">
         <button class="filter-btn active">All</button>

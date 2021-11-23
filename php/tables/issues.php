@@ -1,15 +1,48 @@
+
+
 <?php 
 
 function table_rows($data) {
-    foreach ($data as $row) {
-        echo "<tr>";
-        echo "<td><span>#".$row['id']."</span>".$row['title']."</td>";
-        echo "<td>".$row['type']."</td>";
-        echo "<td>".$row['status']."</td>";
-        echo "<td>".$row['assigned_to']."</td>";
-        echo "<td>".$row['created']."</td>";
-        echo "</tr>";
-    }
+    echo "<tr>";
+    echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
+    echo "<td>Bug</td>";
+    echo "<td class='status open'><span></span></td>";
+    echo "<td>Joel Henry</td>";
+    echo "<td>Me</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
+    echo "<td>Bug</td>";
+    echo "<td class='status open'><span></span></td>";
+    echo "<td>Joel Henry</td>";
+    echo "<td>Me</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
+    echo "<td>Bug</td>";
+    echo "<td class='status closed'><span></span></td>";
+    echo "<td>Joel Henry</td>";
+    echo "<td>Me</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
+    echo "<td>Bug</td>";
+    echo "<td class='status progress'><span></span></td>";
+    echo "<td>Joel Henry</td>";
+    echo "<td>Me</td>";
+    echo "</tr>";
+    // foreach ($data as $row) {
+    //     echo "<tr>";
+    //     echo "<td><span>#".$row['id']."</span>".$row['title']."</td>";
+    //     echo "<td>".$row['type']."</td>";
+    //     echo "<td>".$row['status']."</td>";
+    //     echo "<td>".$row['assigned_to']."</td>";
+    //     echo "<td>".$row['created']."</td>";
+    //     echo "</tr>";
+    // }
 }
 
 $db = new DatabaseSQL();
@@ -39,7 +72,11 @@ $response = $db->select($sql);
 
 if ($response['count'] > 0) {
     $results = $response['results']->fetchAll_assoc(); 
-    table_rows($results);
+    echo table_rows($results);
 }
+
+$results = '';
+
+echo table_rows($results);
 
 ?>
