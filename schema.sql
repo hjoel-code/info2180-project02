@@ -28,15 +28,15 @@ DROP TABLE IF EXISTS Issues;
 CREATE TABLE Issues (
     `id` int(11) NOT NULL auto_increment,
     `title` char(25) NOT NULL default '',
+    `type` char(25) NOT NULL default ''.
     `description` TEXT NOT NULL default '',
     `priority` char(15) NOT NULL default '',
-    `assigned_to` int(11) NOT NULL,
+    `assigned_to` char(25) NOT NULL,
     `created_by` int(11) NOT NULL,
     `created` DATETIME NOT NULL,
     `updated` DATETIME NOT NULL,
 
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`assigned_to`) REFERENCES Users(`id`),
     FOREIGN KEY (`created_by`) REFERENCES Users(`id`)
 
 ) ENGINE=MyISAM AUTO_INCREMENT=4080 DEFAULT CHARSET=utf8mb4;

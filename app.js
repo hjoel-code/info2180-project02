@@ -1,5 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", async function(){
 
 
 /**
@@ -9,25 +9,25 @@ document.addEventListener("DOMContentLoaded", function(){
 * @param {Object} data - Dictionary containing all the data to be sent to the server
 * @returns {Object} Dict type with attr 'data' and 'error'
 */
-function ajax_methods(method, addr, data) {
+async function ajax_methods(method, addr, data) {
     var response = {
         data: null,
         error: null
     }
 
-    if (method.equals("GET") || method.equals("POST")) {
+    if (method == "GET" || method == "POST") {
 
 
-        $.ajax(addr, {
+        await $.ajax( addr, {
             type: method,
             data: data
         })
 
-        .done( result => {
+        .done((result) => {
             response.data = result;
         })
 
-        .fail( error => {
+        .fail( async error => {
             response.error = error
         })
 
@@ -44,7 +44,6 @@ function ajax_methods(method, addr, data) {
  * @param {string} message - Message to display
  * @param {string} title - Title of the message (Optional)
  */
-
 function alert(iserror, message, title = "") {
     $('#alert-message').html(message);
     $('.alert-toaster').removeClass('d-none');
@@ -75,13 +74,24 @@ function alert(iserror, message, title = "") {
     }, 5000);
 }
 
+
 function reload_page(page_title, content) {
     document.title = "BugMe | " + page_title;
     $('#page-content').html(content);
 }
 
+$('#dashboard').on('click', async e => {
+    let response  = await ajax_methods('GET', './routing.php', { content: 'dashboard' })
+    console.log(response);
+    if (response['error'] == null) {
+        reload_page('Dashboard', response['data'])
+    }
 
-alert(true, "Something went wrong")
+})
+
+
+
+
 
 });
 

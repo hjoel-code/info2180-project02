@@ -1,9 +1,5 @@
 <?php 
 
-include('../config.php');
-
-session_start();
-
 
 class User {
     
@@ -11,6 +7,7 @@ class User {
     public $lastname;
     public $email;
     public $uid;
+    public $date_joined;
 
     /**
      * Undocumented function
@@ -21,12 +18,13 @@ class User {
      * @param String $email
      * @return void
      */
-    function set_user($uid, $firstname, $lastname, $email) {
+    function set_user($uid, $firstname, $lastname, $email, $date_joined) {
 
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;
         $this->uid = $uid;
+        $this->date_joined = $date_joined;
 
     }
 
@@ -37,8 +35,7 @@ class Auth {
     public $user;
     private $db;
 
-    function __construct()
-    {
+    function __construct() {
         $this->db = new DatabaseSQL();
     }
 
@@ -59,8 +56,10 @@ class Auth {
                 $data = $response['result']->fetch_assoc();
 
                 $this->user = new User();
-                $this->user->set_user($data['id'], $data['firstname'], $data['lastname'], $data['email']);
+                $this->user->set_user($data['id'], $data['firstname'], $data['lastname'], $data['email'], $data['date_joined']);
+                
                 $_SESSION["auth_state"] = true;
+                $_SESISON["auth"] = serialize($this);
 
                 return true;
             } else {
@@ -73,16 +72,29 @@ class Auth {
     }
 
 
-    function sign_out() {
+    public function sign_out() {
 
         $this->user = null;
         $_SESSION["auth_state"] = false;
+        $_SESSION['auth'] = null;
 
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param String $firstname
+     * @param String $lastname
+     * @param String $email
+     * @param String $password
+     * @return Boolean
+     */
+    public function sign_up($firstname, $lastname, $email, $password) {
+        $response = $this->db->insert("INSERT INTO users (firstname, lastname, email, password, date_joined) VALUES ('$firstname', '$lastname', '$email', MD5('$password'), ADDTIME(CURRENT_DATE(), CURRENT_TIME())");
+    
+        return $response;
     }
 }
 
-
-$_SESSION["auth_state"] = false;
-$_SESSION["auth"] = serialize(new Auth());
 
 ?>

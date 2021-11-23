@@ -1,0 +1,1 @@
+<h1>Bug Detail</h1>

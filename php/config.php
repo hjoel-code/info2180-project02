@@ -12,7 +12,7 @@ class DatabaseSQL {
     /**
      * Undocumented function
      *
-     * @param String $query
+     * @param String $sql
      * @return Dictionary
      */
     function select($sql) {
