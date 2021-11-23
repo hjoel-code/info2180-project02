@@ -1,6 +1,4 @@
 
-<?php if ($_SESSION["auth_state"]) : ?>
-
 <div class="dashboard-title-container">
     <div class="title-container">
         <h1>Issues</h1>
@@ -35,14 +33,3 @@
     </tbody>
 
 </table>
-
-<?php 
-
-?>
-
-
-<?php else: ?>
-
-<?php throw new Exception("AUTHENTICATION REQUIRED") ?>
-
-<?php endif; ?>

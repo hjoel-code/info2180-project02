@@ -27,7 +27,6 @@ class DatabaseSQL {
         
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
-            return $response;
         }
 
         $results = $this->conn->query($sql);
@@ -49,7 +48,6 @@ class DatabaseSQL {
         $this->conn = new mysqli($this->server,  $this->username, $this->password, $this->db);
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
-            return false;
         }
         $stmt = $this->conn->query($sql);
         $this->conn->close();

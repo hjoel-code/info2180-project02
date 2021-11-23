@@ -78,13 +78,20 @@ function alert(iserror, message, title = "") {
 function reload_page(page_title, content) {
     document.title = "BugMe | " + page_title;
     $('#page-content').html(content);
+
+    if (page_title == 'Login') {
+        $('#menu-items').addClass('d-none');
+    } else {
+        $('#menu-items').removeClass('d-none');
+    }
 }
 
 $('#dashboard').on('click', async e => {
-    let response  = await ajax_methods('GET', './routing.php', { content: 'dashboard' })
-    console.log(response);
+    let response  = await ajax_methods('GET', './routing.php', { context: 'dashboard' })
     if (response['error'] == null) {
-        reload_page('Dashboard', response['data'])
+        let data = response['data'];
+        let content = JSON.parse(data);
+        reload_page(content.title, content.content);
     }
 
 })

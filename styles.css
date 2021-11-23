@@ -31,7 +31,10 @@ main .side-menu {
     padding: 30px 0;
 }
 
-.side-menu ul li {
+.side-menu ul li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: rgb(32, 32, 32);
     display: block;
     padding: 10px 10px;
     margin: 10px 0;
@@ -40,18 +43,12 @@ main .side-menu {
     border-right: 5px solid rgb(25, 105, 197);
 }
 
-.side-menu ul li a {
-    text-decoration: none;
-    font-weight: 500;
-    color: rgb(32, 32, 32);
-}
-
 .side-menu ul li a span {
     margin: 0 10px;
 }
 
 
-.side-menu ul li:hover {
+.side-menu ul li a:hover {
     background: rgba(21, 75, 138, 0.788);
     border-right: 5px solid white;
     cursor: pointer;
