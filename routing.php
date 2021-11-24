@@ -27,7 +27,6 @@ function file_output($file) {
     ob_start();
     include($file);
     $output = ob_get_contents();
-
     ob_end_clean();
     return $output;
 }
@@ -43,7 +42,7 @@ if ($isState) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    echo include('./php/forms/forms.php');
+    echo file_output('./php/forms/forms.php');
 
 } else {
     if ($state) {

@@ -15,6 +15,15 @@ $('.filter-btn').on('click', async e => {
 });
 
 $('.create-issue-btn').on('click', async e => {
+    let links = document.getElementsByClassName('menu-link');
+
+    Array.from(links).forEach(link => {
+        if (link.classList.contains('active')) {
+            link.classList.remove('active');
+        }
+    });
+
+    document.getElementById('new_issue').classList.add('active');
     let response  = await ajax_methods('GET', './routing.php', { context: e.currentTarget.id })
     if (response['error'] == null) {
         let data = response['data'];

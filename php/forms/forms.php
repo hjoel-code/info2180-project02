@@ -33,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response = $auth->sign_up($firstname, $lastname, $email, $password);
 
         if ($response) {
-            echo "NEW_USER_CREATED";
+            die("NEW_USER_CREATED");
         } else {
-            echo "ERROR_CREATING_NEW_USER";
+            die("ERROR_CREATING_NEW_USER");
         }
 
     } else if ($content == 'login') {
@@ -49,12 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($response) {
             echo include('./php/dashboard.php');
         } else {
-            echo 'INCORRECT_LOGIN_CREDENTIALS';
+            die('INCORRECT_LOGIN_CREDENTIALS');
         }
             
         
     } else {
-        throw new Exception("Failed to process request");
+        die('FORM_CONTEXT_REQUIRED');
     }
 
 }

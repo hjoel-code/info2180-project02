@@ -5,8 +5,8 @@ class DatabaseSQL {
     public $conn = null;
 
     public $server = "localhost";
-    public $username = "project-2";
-    public $password = "project-123";
+    public $username = "project-2-group";
+    public $password = "project-2";
     public $db = "bugme";
 
     /**
@@ -47,6 +47,7 @@ class DatabaseSQL {
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
+        
         $stmt = $this->conn->query($sql);
         $this->conn->close();
         
