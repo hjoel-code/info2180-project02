@@ -14,7 +14,6 @@ $routes = array(
     'bug_details' => array('title' => 'Bug Details', 'content' => './php/job_detail.php')
 );  
 
-
 function router($routes, $current_path) {
     
     foreach($routes as $path=>$env) {
@@ -48,31 +47,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 } else {
     if ($state) {
+        $isFilter = isset($_GET['filter']);
+        echo $isFilter;
+        if ($isFilter) {
 
-        $isPath = isset($_GET['context']);
-        $current_path = " ";
-        if ($isPath) {
-            $current_path = $_GET['context'];
-        }
-        if ($current_path == 'sign_out') {
-            $auth = unserialize($_SESSION['auth']);
-            $auth->sign_out();
-            $response = array(
-                "title" => 'Login',
-                "content" => file_get_contents('./php/login.php', true)
-            );
+            echo file_output('./php/tables/issues.php');
 
-            echo json_encode($response);
         } else {
-            $env = router($routes, $current_path);
-        
-            $response = array(
-                'title' => $env['title'],
-                'content' => file_output($env['content'])
-            );
+            $isPath = isset($_GET['context']);
+            $current_path = " ";
+            if ($isPath) {
+                $current_path = $_GET['context'];
+            }
+            if ($current_path == 'sign_out') {
+                $auth = unserialize($_SESSION['auth']);
+                $auth->sign_out();
+                $response = array(
+                    "title" => 'Login',
+                    "content" => file_get_contents('./php/login.php', true)
+                );
+
+                echo json_encode($response);
+            } else {
+                $env = router($routes, $current_path);
             
-            echo json_encode($response);
+                $response = array(
+                    'title' => $env['title'],
+                    'content' => file_output($env['content'])
+                );
+                
+                echo json_encode($response);
+            }
         }
+        
     } else {
         $response = array(
             "title" => 'Login',
@@ -82,14 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode($response);
     }
 }
-
-
-
-
-
-
-
-
 
 
 ?>

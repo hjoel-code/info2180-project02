@@ -31,7 +31,6 @@ class DatabaseSQL {
 
         $results = $this->conn->query($sql);
 
-
         $response['count'] = $results->num_rows;
         $response['result'] = $results;
         $response['state'] = true;
@@ -44,7 +43,6 @@ class DatabaseSQL {
     }
 
     function insert($sql) {
-        echo json_encode($sql);
         $this->conn = new mysqli($this->server,  $this->username, $this->password, $this->db);
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);

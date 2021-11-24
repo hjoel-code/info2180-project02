@@ -1,10 +1,14 @@
 
+
+<link rel="stylesheet" href="./php/css/dashboard.css">
+
+
 <div class="dashboard-title-container">
     <div class="title-container">
         <h1>Issues</h1>
     </div>
     <div class="create-issue-btn-container">
-        <button class="create-issue-btn">Create New Issue</button>
+        <button class="create-issue-btn" id="new_issue">Create New Issue</button>
     </div>
 </div>
 
@@ -13,9 +17,9 @@
         <label>Filter by:</label>
     </div>
     <div class="filter-btn-group">
-        <button class="filter-btn active">All</button>
-        <button class="filter-btn">Open</button>
-        <button class="filter-btn">My Tickets</button>
+        <button id="all" class="filter-btn active">All</button>
+        <button id="open" class="filter-btn">Open</button>
+        <button id="my_tickets" class="filter-btn">My Tickets</button>
     </div>
 </div>
 
@@ -28,8 +32,10 @@
         <th>Created</th>
     </thead>
 
-    <tbody>
+    <tbody id='issue-body-container'>
         <?php include('./php/tables/issues.php') ?>
     </tbody>
 
 </table>
+
+<script src="./php/js/dashboard.js"></script>

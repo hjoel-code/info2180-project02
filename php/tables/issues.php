@@ -3,46 +3,15 @@
 <?php 
 
 function table_rows($data) {
-    echo "<tr>";
-    echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
-    echo "<td>Bug</td>";
-    echo "<td class='status open'><span></span></td>";
-    echo "<td>Joel Henry</td>";
-    echo "<td>Me</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
-    echo "<td>Bug</td>";
-    echo "<td class='status open'><span></span></td>";
-    echo "<td>Joel Henry</td>";
-    echo "<td>Me</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
-    echo "<td>Bug</td>";
-    echo "<td class='status closed'><span></span></td>";
-    echo "<td>Joel Henry</td>";
-    echo "<td>Me</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
-    echo "<td>Bug</td>";
-    echo "<td class='status progress'><span></span></td>";
-    echo "<td>Joel Henry</td>";
-    echo "<td>Me</td>";
-    echo "</tr>";
-    // foreach ($data as $row) {
-    //     echo "<tr>";
-    //     echo "<td><span>#".$row['id']."</span>".$row['title']."</td>";
-    //     echo "<td>".$row['type']."</td>";
-    //     echo "<td>".$row['status']."</td>";
-    //     echo "<td>".$row['assigned_to']."</td>";
-    //     echo "<td>".$row['created']."</td>";
-    //     echo "</tr>";
-    // }
+    foreach ($data as $row) {
+        echo "<tr>";
+        echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
+        echo "<td>Bug</td>";
+        echo "<td class='status progress'><span></span></td>";
+        echo "<td>Joel Henry</td>";
+        echo "<td>Me</td>";
+        echo "</tr>";
+    }
 }
 
 $db = new DatabaseSQL();
@@ -50,7 +19,7 @@ $db = new DatabaseSQL();
 
 
 $is_param = isset($_GET['filter']);
-$filter = " ";
+$filter = "all";
 
 if ($is_param) {
     $filter = $_GET['filter'];
@@ -61,9 +30,9 @@ if ($is_param) {
 if ($filter == "my_tickets") {
     $auth = unserialize($_SESSION['auth']);
     $user = $auth->user;
-    $sql = "SELECT * FROM `isues` WHERE assigned_to = '$user->firstname $user->lastname'";
+    $sql = "SELECT * FROM `issues` WHERE assigned_to = ".$user->uid;
 } else if ($filter == "open") {
-    $sql = "SELECT * FROM `issues` WHERE status = 'open'";
+    $sql = "SELECT * FROM `issues` WHERE type = 'bug'";
 } else {
     $sql = "SELECT * FROM `issues`";
 }
@@ -75,8 +44,12 @@ if ($response['count'] > 0) {
     echo table_rows($results);
 }
 
-$results = '';
-
-echo table_rows($results);
+echo "<tr>";
+echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
+echo "<td>Bug</td>";
+echo "<td class='status progress'><span></span></td>";
+echo "<td>Joel Henry</td>";
+echo "<td>Me</td>";
+echo "</tr>";
 
 ?>

@@ -44,7 +44,7 @@ async function ajax_methods(method, addr, data) {
  * @param {string} message - Message to display
  * @param {string} title - Title of the message (Optional)
  */
-function alert(iserror, message, title = "") {
+function alertToast(iserror, message, title = "") {
     $('#alert-message').html(message);
     $('.alert-toaster').removeClass('d-none');
     
@@ -74,7 +74,6 @@ function alert(iserror, message, title = "") {
     }, 5000);
 }
 
-
 function reload_page(page_title, content) {
     document.title = "BugMe | " + page_title;
     $('#page-content').html(content);
@@ -86,8 +85,22 @@ function reload_page(page_title, content) {
     }
 }
 
+window['alertToast'] = alertToast;
+window['ajax_methods'] = ajax_methods;
+window['reload_page'] = reload_page;
+
 $('.menu-link').on('click', async e => {
     e.preventDefault();
+    let links = document.getElementsByClassName('menu-link');
+
+    Array.from(links).forEach(link => {
+        if (link.classList.contains('active')) {
+            link.classList.remove('active');
+        }
+    });
+
+    e.currentTarget.classList.add('active');
+
     let response  = await ajax_methods('GET', './routing.php', { context: e.currentTarget.id })
     if (response['error'] == null) {
         let data = response['data'];
@@ -97,6 +110,9 @@ $('.menu-link').on('click', async e => {
     }
 
 })
+
+
+
 
 
 
