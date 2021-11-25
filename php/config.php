@@ -38,6 +38,7 @@ class DatabaseSQL {
 
         $this->conn->close();
 
+
         return $response;
 
     }
