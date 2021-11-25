@@ -5,7 +5,7 @@
 function table_rows($data) {
     foreach ($data as $row) {
         echo "<tr>";
-        echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
+        echo "<td class='title'><span>#4302</span><a class='issue-title' id='0' href='#'>Bug</a></td>";
         echo "<td>Bug</td>";
         echo "<td class='status progress'><span></span></td>";
         echo "<td>Joel Henry</td>";
@@ -45,7 +45,7 @@ if ($response['count'] > 0) {
 }
 
 echo "<tr>";
-echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
+echo "<td class='title'><span>#4302</span><a class='issue-title' id='0' href='./routing.php'>Bug</a></td>";
 echo "<td>Bug</td>";
 echo "<td class='status progress'><span></span></td>";
 echo "<td>Joel Henry</td>";
