@@ -37,11 +37,10 @@ CREATE TABLE Issues (
     `updated` DATETIME NOT NULL,
 
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`created_by`) REFERENCES Users(`id`)
+    FOREIGN KEY (`created_by`) REFERENCES Users(`id`),
     FOREIGN KEY (`assigned_to`) REFERENCES Users(`id`)
 
 ) ENGINE=MyISAM AUTO_INCREMENT=4080 DEFAULT CHARSET=utf8mb4;
 
 
 INSERT INTO Users VALUES (DEFAULT,'James','Gordon', MD5('password123'),'admin@project2.com', ADDTIME(CURRENT_DATE(), CURRENT_TIME()));
-
