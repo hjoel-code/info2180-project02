@@ -3,9 +3,11 @@
 <h1>Login</h1>
 
 <form action="" id="login-form">
-    <input type="email" name="email">
-    <input type="password" name="password">
+    <input id="email" type="email" name="email" placeholder="Enter email">
+    <div id="single"></div>
+    <input id="password" type="password" name="password" placeholder="Enter password">
     <input type="hidden" name="content" value="login">
+    <div id= "double"></div>
 
 
     <button type="submit" id="login-btn">Sign In</button>
