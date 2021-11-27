@@ -63,7 +63,7 @@ if ($filter == "my_tickets") {
     $user = $auth->user;
     $sql = "SELECT * FROM `issues` WHERE created_by = ".$user->uid;
 } else if ($filter == "open") {
-    $sql = "SELECT * FROM `issues` WHERE type = 'bug'";
+    $sql = "SELECT * FROM `issues` WHERE status = 'open'";
 } else {
     $sql = "SELECT * FROM `issues`";
 }

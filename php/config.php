@@ -6,8 +6,8 @@ class DatabaseSQL {
     public $conn = null;
 
     public $server = "localhost";
-    public $username = "joel-joshua";
-    public $password = "joshua123";
+    public $username = "joshua-hen";
+    public $password = "josh123";
     public $db = "bugme";
 
     /**
