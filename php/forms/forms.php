@@ -7,7 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new DatabaseSQL();
 
     if ($content == 'new_issue') {
-
+    
+        // Form handling of creating a new issue
         $title = $_POST['title'];
         $description = $_POST['description'];
         $assigned_to = $_POST['assigned_to'];
@@ -19,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO issues 
         VALUES (DEFAULT, '".$title."', '".$description."', '".$type."', '".$priority."', '".$assigned_to."', '".$auth->user->get_fullname()."',  ADDTIME(CURRENT_DATE(), CURRENT_TIME()), ADDTIME(CURRENT_DATE(), CURRENT_TIME())";
         $response = $db->insert($sql);
+
 
     } else if ($content == 'new_user') {
 
@@ -63,5 +65,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-
 ?>
+

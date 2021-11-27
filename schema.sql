@@ -37,7 +37,7 @@ CREATE TABLE Issues (
     `updated` DATETIME NOT NULL,
 
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`created_by`) REFERENCES Users(`id`)
+    FOREIGN KEY (`created_by`) REFERENCES Users(`id`),
     FOREIGN KEY (`assigned_to`) REFERENCES Users(`id`)
 
 ) ENGINE=MyISAM AUTO_INCREMENT=4080 DEFAULT CHARSET=utf8mb4;

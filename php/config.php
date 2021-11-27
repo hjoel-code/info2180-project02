@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="./php/css/login.css">
+<script src="./php/js/login.js"></script>
+
 <?php 
 
 
@@ -5,8 +8,8 @@ class DatabaseSQL {
     public $conn = null;
 
     public $server = "localhost";
-    public $username = "project-2-group";
-    public $password = "project-2";
+    public $username = "group-project-2";
+    public $password = "project123";
     public $db = "bugme";
 
     /**

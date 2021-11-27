@@ -2,20 +2,47 @@
 
 <?php 
 
-function table_rows($data) {
-    foreach ($data as $row) {
-        echo "<tr>";
-        echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
-        echo "<td>Bug</td>";
-        echo "<td class='status progress'><span></span></td>";
-        echo "<td>Joel Henry</td>";
-        echo "<td>Me</td>";
-        echo "</tr>";
-    }
-}
 
 $db = new DatabaseSQL();
 
+function table_rows($data) {
+    $db = new DatabaseSQL();
+    foreach ($data as $row) {
+        $sql = "SELECT * FROM 'users' WHERE id='".$row['assigned']."";
+        $stateAssigned = $db->select($sql);
+        $sql = "SELECT * FROM 'user' WHERE id='".$row['assigned']."";
+        $stateCreated = $db->select($sql);
+
+        if ($stateAssigned->state && $stateCreated->state) {
+            
+            if ($stateCreated->count > 0) {
+                $created = new User();
+                $created->set_user($stateCreated->results['id'], $stateCreated->results['firstname'], $stateCreated->results['lastname'], $stateCreated->results['email'], $stateCreated->results['date_joined']);
+            } else {
+                die("Error Retrieving Data");
+            }
+
+            if ($stateAssigned->count > 0) {
+                $assigned = new User();
+                $assigned->set_user($stateAssigned->results['id'], $stateAssigned->results['firstname'], $stateAssigned->results['lastname'], $stateAssigned->results['email'], $stateAssigned->results['date_joined']);
+            } else {
+                die("Error Retrieving Data");
+            }
+
+            echo "<tr>";
+            echo "<td class='title'><span>#".$row['id']."</span><a class='issue-title' id='".$row['id']."' href='#'>".$row['title']."</a></td>";
+            echo "<td>".$row['type']."</td>";
+            echo "<td class='status ".$row['id']."'><span></span></td>";
+            echo "<td>".$assigned->get_fullname()."</td>";
+            echo "<td>".$created->get_fullname()."</td>";
+            echo "</tr>";
+        }
+
+        
+
+        
+    }
+}
 
 
 $is_param = isset($_GET['filter']);
@@ -45,7 +72,7 @@ if ($response['count'] > 0) {
 }
 
 echo "<tr>";
-echo "<td class='title'><span>#4302</span><a href='#'>Bug</a></td>";
+echo "<td class='title'><span>#4302</span><a class='issue-title' id='0' href='./routing.php'>Bug</a></td>";
 echo "<td>Bug</td>";
 echo "<td class='status progress'><span></span></td>";
 echo "<td>Joel Henry</td>";
