@@ -5,9 +5,12 @@ class DatabaseSQL {
     public $conn = null;
 
     public $server = "localhost";
-    public $username = "project-2-group";
-    public $password = "project-2";
+    // public $username = "project-2-group";
+    // public $password = "project-2";
     public $db = "bugme";
+
+    public $username = "joel-henry";
+    public $password = "gennagenna";
 
     /**
      * Undocumented function

@@ -33,7 +33,9 @@
     </thead>
 
     <tbody id='issue-body-container'>
-        <?php include('./php/tables/issues.php') ?>
+        <?php 
+        // include('./php/tables/issues.php')
+         ?>
     </tbody>
 
 </table>

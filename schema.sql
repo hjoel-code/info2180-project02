@@ -32,6 +32,7 @@ CREATE TABLE Issues (
     `description` TEXT NOT NULL default '',
     `type` char(25) NOT NULL default '',
     `priority` char(15) NOT NULL default '',
+    `status` char(15) NOT NULL default '',
     `assigned_to` int(11) NOT NULL,
     `created_by` int(11) NOT NULL,
     `created` DATETIME NOT NULL,
