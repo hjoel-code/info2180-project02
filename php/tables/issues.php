@@ -7,34 +7,38 @@ $db = new DatabaseSQL();
 
 function table_rows($data) {
     $db = new DatabaseSQL();
-    foreach ($data as $row) {
-        $sql = "SELECT * FROM 'users' WHERE id='".$row['assigned']."";
+    while($row = $data->fetch_assoc()) {
+        $sql = "SELECT * FROM `users` WHERE id=".(int)$row['assigned_to']."";
         $stateAssigned = $db->select($sql);
-        $sql = "SELECT * FROM 'user' WHERE id='".$row['assigned']."";
+        $sql = "SELECT * FROM `users` WHERE id=".(int)$row['created_by']."";
         $stateCreated = $db->select($sql);
-
-        if ($stateAssigned->state && $stateCreated->state) {
+        if ($stateAssigned['state'] && $stateCreated['state']) {
             
-            if ($stateCreated->count > 0) {
+            if ($stateCreated['count'] > 0) {
                 $created = new User();
-                $created->set_user($stateCreated->results['id'], $stateCreated->results['firstname'], $stateCreated->results['lastname'], $stateCreated->results['email'], $stateCreated->results['date_joined']);
+                $stateCreated = $stateCreated['result']->fetch_assoc();
+                $created->set_user($stateCreated['id'], $stateCreated['firstname'], $stateCreated['lastname'], $stateCreated['email'], $stateCreated['date_joined']);
             } else {
                 die("Error Retrieving Data");
             }
 
-            if ($stateAssigned->count > 0) {
+            if ($stateAssigned['count'] > 0) {
                 $assigned = new User();
-                $assigned->set_user($stateAssigned->results['id'], $stateAssigned->results['firstname'], $stateAssigned->results['lastname'], $stateAssigned->results['email'], $stateAssigned->results['date_joined']);
+                $stateAssigned = $stateAssigned['result']->fetch_assoc();
+
+                $assigned->set_user($stateAssigned['id'], $stateAssigned['firstname'], $stateAssigned['lastname'], $stateAssigned['email'], $stateAssigned['date_joined']);
             } else {
                 die("Error Retrieving Data");
             }
+
+            $date = date_create($row['created']);
 
             echo "<tr>";
             echo "<td class='title'><span>#".$row['id']."</span><a class='issue-title' id='".$row['id']."' href='#'>".$row['title']."</a></td>";
             echo "<td>".$row['type']."</td>";
-            echo "<td class='status ".$row['id']."'><span></span></td>";
+            echo "<td class='status ".$row['status']."'><span></span></td>";
             echo "<td>".$assigned->get_fullname()."</td>";
-            echo "<td>".$created->get_fullname()."</td>";
+            echo "<td>".date_format($date, 'Y-m-d H:i:s')."</td>";
             echo "</tr>";
         }
 
@@ -57,7 +61,7 @@ if ($is_param) {
 if ($filter == "my_tickets") {
     $auth = unserialize($_SESSION['auth']);
     $user = $auth->user;
-    $sql = "SELECT * FROM `issues` WHERE assigned_to = ".$user->uid;
+    $sql = "SELECT * FROM `issues` WHERE created_by = ".$user->uid;
 } else if ($filter == "open") {
     $sql = "SELECT * FROM `issues` WHERE type = 'bug'";
 } else {
@@ -67,16 +71,7 @@ if ($filter == "my_tickets") {
 $response = $db->select($sql);
 
 if ($response['count'] > 0) {
-    $results = $response['results']->fetchAll_assoc(); 
+    $results = $response['result'];
     echo table_rows($results);
 }
-
-echo "<tr>";
-echo "<td class='title'><span>#4302</span><a class='issue-title' id='0' href='./routing.php'>Bug</a></td>";
-echo "<td>Bug</td>";
-echo "<td class='status progress'><span></span></td>";
-echo "<td>Joel Henry</td>";
-echo "<td>Me</td>";
-echo "</tr>";
-
 ?>

@@ -118,7 +118,8 @@ document.addEventListener("DOMContentLoaded", async function(){
     })
 
 
-    let response  = await ajax_methods('GET', './routing.php', { context: 'dashboard' })
+    let response  = await ajax_methods('GET', './routing.php', { context: 'dashboard' });
+    console.log(response)
     if (response['error'] == null) {
         let data = response['data'];
         let content = JSON.parse(data);
@@ -126,14 +127,6 @@ document.addEventListener("DOMContentLoaded", async function(){
     }
 
 
-
-
-
-
-
-
-
 });
-
 
 
