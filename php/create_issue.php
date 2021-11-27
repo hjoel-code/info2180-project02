@@ -4,6 +4,7 @@
 <h1>Create Issue</h1>
 
 
+
 <?php 
     function assigned_to(){
         $query = 'SELECT * FROM users';
@@ -25,28 +26,31 @@
     <form id="issue-form" name="create-issue" action="./routing.php" method="post">
         <input type="hidden" type="text" name="content" value="new_issue">
         <label for="title">Title:</label><br>
-        <input type="text" name="title" maxlength="35"><br>
+        <input type="text" name="title" maxlength="35"><br><br>
         <label for="description">Description:</label><br>
-        <textarea name="description" cols="30" rows="10"></textarea><br>
-        <label for="assigned_to">Assigned to:</label>
+        <textarea name="description" cols="30" rows="10"></textarea><br><br>
+        <label for="assigned_to">Assigned to:</label><br>
             <select id="assigned_to" name="assigned_to">
+            <option value="" disabled selected hidden>Select a user</option>
                 <?php assigned_to() ?>
         </select>
-        <br>
-        <label for="type">Type:</label>
+        <br><br>
+        <label for="type">Type:</label><br>
             <select id="type" name="type">
+            <option value="" disabled selected hidden>Choose a type</option>
             <option value="Bug">Bug</option>
             <option value="Proposal">Proposal</option>
             <option value="Task">Task</option>
         </select>
-        <br>
-        <label for="priority">Priority:</label>
+        <br><br>
+        <label for="priority">Priority:</label><br>
             <select id="priority"name="priority">
+            <option value="" disabled selected hidden>Select priority</option>
             <option value="Critical">Critical</option>
             <option value="Major">Major</option>
             <option value="Minor">Minor</option>
         </select>
-        <br>
+        <br><br>
         <button type="submit" id="issue-btn">Submit</button>
 </form>
 
