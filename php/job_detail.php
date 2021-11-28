@@ -5,7 +5,7 @@
     $id = $_GET['id'];
     
     
-    function getDetails(){
+    function getDetails($id){
         $query = "SELECT * FROM `issues` WHERE id = ".$id."" ;
         
         $db = new DatabaseSQL();
@@ -18,5 +18,8 @@
                 }
             }
         }
-}
+    }
+
+
+    getDetails($id);
 ?>
