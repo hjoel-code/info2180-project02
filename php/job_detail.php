@@ -3,8 +3,11 @@
 <?php 
 
     $id = $_GET['id'];
+    
+    
     function getDetails(){
-        $query = 'SELECT * FROM `issues` WHERE id = %$id%' ;
+        $query = "SELECT * FROM `issues` WHERE id = ".$id."" ;
+        
         $db = new DatabaseSQL();
         $result = $db->select($query);
         if ($result['state']){
