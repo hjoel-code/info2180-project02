@@ -38,5 +38,3 @@
     </tbody>
 
 </table>
-
-<script src="./php/js/dashboard.js"></script>

@@ -87,7 +87,7 @@
 
         <ul>
             <li><span><i class="fa fa-chevron-right"></i></span> Issue created on <?= date_format($createDate, "F d, Y") ?> at <?php echo date_format($createDate, "g:i A") ?>  by <?= $created->get_fullname() ?> </li>
-            <li><span><i class="fa fa-chevron-right"></i></span> Last updated on <?= date_format($createDate, "F d, Y") ?> at <?php echo date_format($createDate, "g:i A") ?></li>
+            <li><span><i class="fa fa-chevron-right"></i></span> Last updated on <?= date_format($updateDate, "F d, Y") ?> at <?php echo date_format($createDate, "g:i A") ?></li>
         </ul>
     </div>
     <div class="bug-details-container">
@@ -99,6 +99,7 @@
                 <li><h4>Status</h4><p class="<?= $arr['status'] ?>"></p></li>
             </ul>
         </div>
+        <input id="bug-id" type="hidden" value="<?= $arr['id'] ?>">
         <button id="closed-btn" <?= $closed ?>>Mark as Closed</button>
         <button id='progress-btn' <?= $progress ?>>Mark In Progress</button>
     </div>

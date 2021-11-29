@@ -60,6 +60,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
             
         
+    } else if ($content == 'bug') {
+        $status = $_POST['status'];
+        $id = $_POST['id'];
+        $sql = "UPDATE `issues` SET status='".$status."', updated=ADDTIME(CURRENT_DATE(), CURRENT_TIME()) WHERE id=".(int)$id.""; 
+        $response = $db->insert($sql);
+        echo json_encode($response);
+        if ($response) {
+            echo 'SUCCESS';
+        } else {
+            echo 'FAILED_TO_UPDATE';
+        }
     } else {
         die('FORM_CONTEXT_REQUIRED');
     }

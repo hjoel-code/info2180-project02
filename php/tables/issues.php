@@ -38,7 +38,7 @@ function table_rows($data) {
             echo "<td>".$row['type']."</td>";
             echo "<td class='status ".$row['status']."'><span></span></td>";
             echo "<td>".$assigned->get_fullname()."</td>";
-            echo "<td>".date_format($date, 'Y-m-d H:i:s')."</td>";
+            echo "<td>".date_format($date, 'Y/m/d')." ".date_format($date, "g:i A")."</td>";
             echo "</tr>";
         }
 
@@ -75,3 +75,5 @@ if ($response['count'] > 0) {
     echo table_rows($results);
 }
 ?>
+
+<script src="./php/js/dashboard.js"></script>
