@@ -37,6 +37,7 @@ $('.create-issue-btn').on('click', async e => {
 $('.issue-title').on('click', async e => {
     e.preventDefault();
     let response = await ajax_methods('GET', './routing.php', { context: 'bug_details', id: e.currentTarget.id })
+    console.log(response);
     if (response['error'] == null) {
         let data = response['data'];
 
