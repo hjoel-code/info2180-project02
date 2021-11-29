@@ -1,0 +1,44 @@
+#login-form{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    column-gap:5px;
+}
+
+input[type=text]{
+    background-color: rgb(219, 219, 219);
+    color:black;
+    width:500px;
+    height: 30px; 
+    border-radius: 5px; 
+    border: 2px solid rgb(170, 169, 169);
+
+}
+textarea{
+    background-color: rgb(219, 219, 219);
+    color:black;
+    width:500px; 
+    border-radius: 5px; 
+    border: 2px solid rgb(170, 169, 169);
+}
+select{
+    background-color: rgb(219, 219, 219);
+    color:black;
+    width:500px;
+    height: 40px; 
+    border-radius: 5px; 
+    border: 2px solid rgb(170, 169, 169);
+}
+#issue-btn{
+    background: #3d49ec;
+    color:white;
+    width:120px;
+    height: 40px; 
+    border-radius: 5px; 
+    border: 0px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+label{
+    font-weight:bold;
+}

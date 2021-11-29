@@ -1,0 +1,41 @@
+#login-form{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    column-gap:5px;
+}
+
+#email{
+    background-color: white;
+    color:black;
+    width:300px;
+    height: 50px; 
+    border-radius: 5px; 
+    border: 2px solid #E2E8F0;
+    
+}
+
+#password{
+    background-color: white;
+    color:black;
+    width:300px;
+    height: 50px; 
+    border-radius: 5px; 
+    border: 2px solid #E2E8F0;
+}
+#login-btn{
+    background: #3d49ec;
+    color:white;
+    width:100px;
+    height: 50px; 
+    border-radius: 5px; 
+    border: 0px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#single{
+    height:10px;
+}
+#double{
+    height:30px;
+}
