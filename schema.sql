@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS Issues;
 
 CREATE TABLE Issues (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `title` char(25) NOT NULL default '',
+    `title` char(35) NOT NULL default '',
     `description` TEXT NOT NULL default '',
     `type` char(25) NOT NULL default '',
     `priority` char(15) NOT NULL default '',

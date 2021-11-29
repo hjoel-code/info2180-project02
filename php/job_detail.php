@@ -16,10 +16,7 @@
             }
             
         }
-
-        return null;
-
-        
+        return null;    
     }
 
 
@@ -46,6 +43,7 @@
         $stateAssigned = $db->select($sql);
         $sql = "SELECT * FROM `users` WHERE id=".(int)$arr['created_by']."";
         $stateCreated = $db->select($sql);
+
         if ($stateAssigned['state'] && $stateCreated['state']) {
             
             if ($stateCreated['count'] > 0) {
@@ -87,7 +85,7 @@
 
         <ul>
             <li><span><i class="fa fa-chevron-right"></i></span> Issue created on <?= date_format($createDate, "F d, Y") ?> at <?php echo date_format($createDate, "g:i A") ?>  by <?= $created->get_fullname() ?> </li>
-            <li><span><i class="fa fa-chevron-right"></i></span> Last updated on <?= date_format($updateDate, "F d, Y") ?> at <?php echo date_format($createDate, "g:i A") ?></li>
+            <li><span><i class="fa fa-chevron-right"></i></span> Last updated on <?= date_format($updateDate, "F d, Y") ?> at <?php echo date_format($updateDate, "g:i A") ?></li>
         </ul>
     </div>
     <div class="bug-details-container">
