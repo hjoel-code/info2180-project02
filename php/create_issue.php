@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="./php/css/new_issue.css">
 
 <h1>Create Issue</h1>
@@ -19,25 +18,25 @@
                     function updateAssignedTo(){
                         $assigned = $row["assigned_to"];
                         $created = $row['created_by'];
-                        
+
                         $query = "INSERT INTO issues (assigned_to, created_by) VALUES ($assigned, $created)";
                         $db = new DatabaseSQL();
                         $result = $db->select($query);
                         print_r($result);
                     }
-    
-                    
-                    
+
+
+
                     echo "<option value='".$row["id"]."'>".$row["firstname"]. " " . $row["lastname"]."</option>" ;
-                    
+
                 }
 
-                
+
             }
         }
     }
 
-    
+
 
 ?>
 
@@ -75,5 +74,5 @@
 </form>
 
 
-    
-<script src="./php/js/new_issue.js"></script>
+
+<script src="./php/js/new_issue.js"></script> 
