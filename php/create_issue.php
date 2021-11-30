@@ -14,18 +14,19 @@
             if ($result['count'] > 0) {
                 // output data of each row
                 while($row = $result['result']->fetch_assoc()) {
+                    updateAssignedTo();
 
                     function updateAssignedTo(){
                         $assigned = $row["assigned_to"];
                         $created = $row['created_by'];
                         
-                        $query = 'INSERT INTO issues (assigned_to, created_by) VALUES ($assigned, $created)';
+                        $query = "INSERT INTO issues (assigned_to, created_by) VALUES ($assigned, $created)";
                         $db = new DatabaseSQL();
                         $result = $db->select($query);
                         print_r($result);
                     }
     
-                    updateAssignedTo();
+                    
                     
                     echo "<option value='".$row["id"]."'>".$row["firstname"]. " " . $row["lastname"]."</option>" ;
                     
