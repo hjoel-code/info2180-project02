@@ -53,7 +53,6 @@ input[type=email], select {
     display: inline-block;
 }
 
-
 .invalid{
     border: solid red;
 }
