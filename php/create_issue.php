@@ -23,36 +23,42 @@
 
 
 <div class="create_issue_form">
-    <form id="issue-form" name="create-issue" action="./routing.php" method="post">
+    <form id="issue-form" name="create-issue" action="#">
+        
         <input type="hidden" type="text" name="content" value="new_issue">
-        <label for="title">Title:</label><br>
-        <input type="text" name="title" maxlength="35"><br><br>
-        <label for="description">Description:</label><br>
-        <textarea name="description" cols="30" rows="10"></textarea><br><br>
-        <label for="assigned_to">Assigned to:</label><br>
-            <select id="assigned_to" name="assigned_to">
+            
+        <label for="title">Title</label>
+        <input type="text" name="title" maxlength="35">
+            
+        <label for="description">Description</label>
+        <textarea name="description" cols="30" rows="10"></textarea>
+            
+        <label for="assigned_to">Assigned to</label>
+        <select id="assigned_to" name="assigned_to">
             <option value="" disabled selected hidden>Select a user</option>
-                <?php assigned_to() ?>
+            <?php assigned_to() ?>
         </select>
-        <br><br>
-        <label for="type">Type:</label><br>
-            <select id="type" name="type">
+            
+        <label for="type">Type</label>
+        <select id="type" name="type">
             <option value="" disabled selected hidden>Choose a type</option>
             <option value="Bug">Bug</option>
             <option value="Proposal">Proposal</option>
             <option value="Task">Task</option>
         </select>
-        <br><br>
-        <label for="priority">Priority:</label><br>
-            <select id="priority"name="priority">
+            
+        <label for="priority">Priority</label>
+        <select id="priority"name="priority">
             <option value="" disabled selected hidden>Select priority</option>
             <option value="Critical">Critical</option>
             <option value="Major">Major</option>
             <option value="Minor">Minor</option>
         </select>
-        <br><br>
+            
         <button type="submit" id="issue-btn">Submit</button>
-</form>
+    </form>
+
+</div>
 
 
     

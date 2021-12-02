@@ -1,7 +1,20 @@
-#login-form{
-    display: grid;
-    justify-content: start;
-    grid-template-columns: 36%;
+h1 {
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#new-user-form {
+    width: 37vw;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #3a3a3a;
+}
+
+hr { 
+    color: gray;
 }
 
 input {
@@ -10,12 +23,11 @@ input {
     display: block;
     border-radius: 5px;
     background-color: #e9e9e9;
-    margin: 5px 0 20px 0;
+    margin: 5px 0 30px 0;
     border: none;
 }
 
-
-#login-btn{
+button#submit_form { 
     width: auto;
     background-color: #0073e6;
     border-radius: 5px;
@@ -24,12 +36,8 @@ input {
     border: none;
 }
 
-#single{
-    height:10px;
-}
-
-#double{
-    height:30px;
+.invalid{
+    border: solid rgb(255, 99, 99);
 }
 
 .password-input-container {

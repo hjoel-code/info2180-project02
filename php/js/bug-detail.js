@@ -11,9 +11,7 @@ async function reloadBug() {
 
 
 $('#closed-btn').on('click', async e => {
-    console.log('closing');
     let response = await ajax_methods('POST', './routing.php', { content: 'bug', status: 'closed', id: $('#bug-id').val() });
-    console.log(response);
     if (response['error'] == null) {
         let data = response['data'];
 
@@ -31,7 +29,6 @@ $('#closed-btn').on('click', async e => {
 
 $('#progress-btn').on('click', async e => {
     let response = await ajax_methods('POST', './routing.php', { content: 'bug', status: 'progress', id: $('#bug-id').val() });
-    console.log(response);
     if (response['error'] == null) {
         let data = response['data'];
 

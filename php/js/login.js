@@ -38,23 +38,23 @@ $('#login-btn').on('click', async e => {
 
     if (response['error'] == null) {
         let data = response['data'];
-        console.log(data);
         if (data.includes("INCORRECT_LOGIN_CREDENTIALS")) {
             alertToast(true, "Incorrect Credentials");
-        } else {
-            let links = document.getElementsByClassName('menu-link');
-
-            Array.from(links).forEach(link => {
-                if (link.classList.contains('active')) {
-                    link.classList.remove('active');
-                }
-            });
-
-            document.getElementById('dashboard').classList.add('active');
-            reload_page('Dashboard', data);
+        } else if (data.includes('USER_LOGGED_IN')) {
+            redirect_page('dashboard');
             alertToast(false, "Successfully Logged In");
+        } else {
+            alertToast(true, "Something went wrong");
         }
+    } else {
+        alertToast(true, "Something went wrong");
     }
 
 
+})
+
+
+$('#togglePassword').on('click', e => {
+    e.preventDefault();
+    togglePassword(e.currentTarget, document.getElementById('password'));
 })

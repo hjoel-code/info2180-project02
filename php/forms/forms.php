@@ -21,15 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response = $db->insert($sql);
 
         if ($response) {
-            echo include('./php/dashboard.php');
+            die('NEW_ISSUE_CREATED');
         } else {
-            echo 'FAILED_TO_CREATE_ISSUE';
+            die('FAILED_TO_CREATE_ISSUE');
         }
 
 
     } else if ($content == 'new_user') {
-
-        echo json_encode($_POST);
         
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
@@ -54,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response = $auth->login($email, $password);
         
         if ($response) {
-            echo include('./php/dashboard.php');
+            die("USER_LOGGED_IN");
         } else {
             die('INCORRECT_LOGIN_CREDENTIALS');
         }
@@ -67,9 +65,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response = $db->insert($sql);
         echo json_encode($response);
         if ($response) {
-            echo 'SUCCESS';
+            die('SUCCESS');
         } else {
-            echo 'FAILED_TO_UPDATE';
+            die('FAILED_TO_UPDATE');
         }
     } else {
         die('FORM_CONTEXT_REQUIRED');
