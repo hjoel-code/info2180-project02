@@ -1,0 +1,59 @@
+h1 {
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.labels {
+    font-weight: bold;
+    color: #00001a;
+}
+
+hr { 
+    color: gray;
+}
+
+input[type=text], select {
+    width: 50%;
+    padding: 10px 25px;
+    display: block;
+    border-radius: 4px;
+    box-sizing: border-box;
+    float: center;
+    background-color: #F8F8F8;
+    margin: 5px 0px;
+}
+
+input[type=password], select {
+    width: 50%;
+    padding: 10px 25px;
+    display: block;
+    border-radius: 4px;
+    box-sizing: border-box;
+    float: center;
+    background-color: #F8F8F8;
+    margin: 5px 0px;
+}
+
+input[type=email], select {
+    width: 50%;
+    padding: 10px 25px;
+    display: block;
+    border-radius: 4px;
+    box-sizing: border-box;
+    float: center;
+    background-color: #F8F8F8;
+    margin: 5px 0px;
+}
+
+#submit_form { 
+    background-color: #0073e6;
+    border-radius: 5px;
+    padding: 12px 25px;
+    color: white;
+    display: inline-block;
+}
+
+
+.invalid{
+    border: solid red;
+}
