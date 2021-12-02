@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="./php/css/login.css">
 
-<h1>Login</h1>
+<h1 class="page-title">Login</h1>
 
 <form action="" id="login-form">
     <input id="email" type="email" name="email" placeholder="Email">

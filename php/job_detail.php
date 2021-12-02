@@ -77,7 +77,7 @@
 
 
 <div class="bug-title">
-    <h1><?= $arr['title'] ?></h1>
+    <h1 class="page-title"><?= $arr['title'] ?></h1>
     <h3>Issue #<?= $arr['id'] ?></h3>
 </div>
 

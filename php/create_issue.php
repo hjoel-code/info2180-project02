@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="./php/css/new_issue.css">
 
-<h1>Create Issue</h1>
+<h1 class="page-title">Create Issue</h1>
 
 
 

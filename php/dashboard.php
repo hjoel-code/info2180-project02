@@ -5,7 +5,7 @@
 
 <div class="dashboard-title-container">
     <div class="title-container">
-        <h1>Issues</h1>
+        <h1 class="page-title">Issues</h1>
     </div>
     <div class="create-issue-btn-container">
         <button class="create-issue-btn" id="new_issue">Create New Issue</button>

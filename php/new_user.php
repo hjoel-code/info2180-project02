@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="./php/css/new_user.css">
     
-    <h1>New User</h1>
+    <h1 class="page-title">New User</h1>
     <form id="new-user-form" method="post" action="#">
     
             <label for="firstname">Firstname</label>
