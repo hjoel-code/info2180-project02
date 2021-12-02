@@ -1,51 +1,40 @@
-/*window.onload = function (){
-    
-}
- 
- 
- 
- if (!isValidEmail(email.value.trim())) {
-        validationFailed = true;
-        //alert('Incorrect format for email.');
-        displayErrorMessage(email, "Incorrect format for email address.");
-      };
-*/
-
-/*function validateform(){
-    
+function validateform(){    
     var fname = document.getElementById("fname").value;
     var lname = document.getElementById("lname").value;
     var pass = document.getElementById("pass").value;
     var email = document.getElementById("email").value;
-    
+   
+    var valid = true;
 
-    function validateFName(){
-        var NameReg = /^[a-zA-Z]+ [a-zA-Z]+$/;
-        var fname = document.getElementById('fname');
-        //if (fname !=null || fname != "" || isNaN(fname)) {
-        if(!NameReg.test(fname)){
-            alert('Please enter a valid first name');
-            document.getElementById('fname').classList.add("invalid");
-            return false;
-        }else{
-            document.getElementById('fname').classList.remove("invalid");
-            return true;
-        }
+    var nameReg = /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/
+    if (!fname.match(nameReg)) {
+        document.getElementById("fname").classList.add("invalid");
+	    valid = false;
+    } else {
+        document.getElementById("fname").classList.remove("invalid");
     }
-    
-}
 
+    if (!lname.match(nameReg)) { 
+        document.getElementById("lname").classList.add("invalid");
+        valid = false;
+    } else {
+        document.getElementById("lname").classList.remove("invalid");
+    }
 
-function validateLName(){
-    var NameReg = /^[a-zA-Z]+ [a-zA-Z]+$/;
-    var lname = document.getElementById('lname');
-}
+    var passReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+    if (!pass.match(passReg)) {
+        document.getElementById("pass").classList.add("invalid");
+	    valid = false;
+    } else {
+        document.getElementById("pass").classList.remove("invalid");
+    }
 
-function validateEmail(){
-    var EmailReg = /^(([^<>()\]\\.,;:\s@";]+(\.[^<>()\[\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var emailReg = /^(([^<>()\]\\.,;:\s@";]+(\.[^<>()\[\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!email.match(emailReg)) {
+        document.getElementById("email").classList.add("invalid");
+	    valid = false;
+    } else {
+        document.getElementById("email").classList.remove("invalid");
+    }
+    return valid;
 }
-
-function validatePassword(){
-    var PassReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
-}
-*/
