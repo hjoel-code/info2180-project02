@@ -1,7 +1,7 @@
     <link rel="stylesheet" href="./php/css/new_user.css">
     <script src="./php/new_user.js"></script>
     <h1>New User</h1>
-    <form method="post" action="#" onsubmit="return validateform();">
+    <form method="post" action="./routing.php" onsubmit="return validateform();">
     
         <div class = "labels">
             <label for="firstname">Firstname</label><br/>
