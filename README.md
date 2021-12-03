@@ -12,5 +12,6 @@ These are the following group members:
 
 
 ***
-Before you get start run the following SQL query;
-GRANT ALL PRIVILEGES ON bugme.* TO 'project-final'@'localhost' IDENTIFIED BY 'password-final';
+Before you get started, run the following SQL query;
+
+* *GRANT ALL PRIVILEGES ON bugme.* TO 'project-final'@'localhost' IDENTIFIED BY 'password-final';
