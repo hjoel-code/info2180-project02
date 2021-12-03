@@ -47,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     if ($state) {
         $isFilter = isset($_GET['filter']);
-        echo $isFilter;
         if ($isFilter) {
 
             echo file_output('./php/tables/issues.php');

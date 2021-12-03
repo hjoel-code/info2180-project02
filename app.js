@@ -3,13 +3,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
 
     
-    /**
-    * 
-    * @param {string} method - The specified request method
-    * @param {string} addr - The address that the request is to be sent
-    * @param {Object} data - Dictionary containing all the data to be sent to the server
-    * @returns {Object} Dict type with attr 'data' and 'error'
-    */
+    
     async function ajax_methods(method, addr, data) {
         var response = {
             data: null,
@@ -39,12 +33,7 @@ document.addEventListener("DOMContentLoaded", async function(){
         return response
     }
 
-    /**
-     * 
-     * @param {boolean} iserror - True if it is an error; False if not
-     * @param {string} message - Message to display
-     * @param {string} title - Title of the message (Optional)
-     */
+    
     function alertToast(iserror, message, title = "") {
         $('#alert-message').html(message);
         $('.alert-toaster').removeClass('d-none');
@@ -75,11 +64,7 @@ document.addEventListener("DOMContentLoaded", async function(){
         }, 5000);
     }
 
-    /**
-     * 
-     * @param {String} page_title - Title of the epage
-     * @param {String} content - Content of the page
-     */
+    
     function reload_page(page_title, content) {
         document.title = "BugMe | " + page_title;
         $('#page-content').html(content);
@@ -91,34 +76,50 @@ document.addEventListener("DOMContentLoaded", async function(){
         }
     }
 
-    window['alertToast'] = alertToast;
-    window['ajax_methods'] = ajax_methods;
-    window['reload_page'] = reload_page;
 
-    $('.menu-link').on('click', async e => {
-        e.preventDefault();
-        let links = document.getElementsByClassName('menu-link');
+    async function redirect_page(page) {
 
-        Array.from(links).forEach(link => {
-            if (link.classList.contains('active')) {
-                link.classList.remove('active');
-            }
-        });
-
-        e.currentTarget.classList.add('active');
-
-        let response  = await ajax_methods('GET', './routing.php', { context: e.currentTarget.id })
+        let response  = await ajax_methods('GET', './routing.php', { context: page })
         if (response['error'] == null) {
-            let data = response['data'];
+            let links = document.getElementsByClassName('menu-link');
+            let link = document.getElementById(page);
 
+            Array.from(links).forEach(link => {
+                if (link.classList.contains('active')) {
+                    link.classList.remove('active');
+                }
+            });
+
+            link.classList.add('active');
+
+
+            let data = response['data'];
             let content = JSON.parse(data);
             reload_page(content.title, content.content);
         }
+    }
 
+    function togglePassword(togglebtn, element) {
+        const type = element.getAttribute('type') === 'password' ? 'text' : 'password';
+
+        element.setAttribute('type', type);
+        
+        togglebtn.innerHTML = type === 'password' ? "<span><i class='fa fa-eye-slash'></i></span>" : "<span><i class='fa fa-eye'></i></span>";
+    }
+
+    window['alertToast'] = alertToast;
+    window['ajax_methods'] = ajax_methods;
+    window['reload_page'] = reload_page;
+    window['redirect_page'] = redirect_page;
+    window['togglePassword'] = togglePassword;
+
+    $('.menu-link').on('click', async e => {
+        e.preventDefault();
+        redirect_page(e.currentTarget.id);
     })
 
 
-    let response  = await ajax_methods('GET', './routing.php', { context: 'dashboard' })
+    let response  = await ajax_methods('GET', './routing.php', { context: 'dashboard' });
     if (response['error'] == null) {
         let data = response['data'];
         let content = JSON.parse(data);
@@ -126,14 +127,6 @@ document.addEventListener("DOMContentLoaded", async function(){
     }
 
 
-
-
-
-
-
-
-
 });
-
 
 

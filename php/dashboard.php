@@ -5,7 +5,7 @@
 
 <div class="dashboard-title-container">
     <div class="title-container">
-        <h1>Issues</h1>
+        <h1 class="page-title">Issues</h1>
     </div>
     <div class="create-issue-btn-container">
         <button class="create-issue-btn" id="new_issue">Create New Issue</button>
@@ -33,9 +33,8 @@
     </thead>
 
     <tbody id='issue-body-container'>
-        <?php include('./php/tables/issues.php') ?>
+        <?php 
+        include('./php/tables/issues.php') ?>
     </tbody>
 
 </table>
-
-<script src="./php/js/dashboard.js"></script>

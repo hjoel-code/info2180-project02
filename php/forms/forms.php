@@ -7,22 +7,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new DatabaseSQL();
 
     if ($content == 'new_issue') {
-
+    
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $assigned_to = $_POST['assigned_to'];
+        $assigned_to = (int)$_POST['assigned_to'];
         $type = $_POST['type'];
         $priority = $_POST['priority'];
 
         $auth = unserialize($_SESSION['auth']);
 
-        $sql = "INSERT INTO issues 
-        VALUES (DEFAULT, '".$title."', '".$description."', '".$type."', '".$priority."', '".$assigned_to."', '".$auth->user->get_fullname()."',  ADDTIME(CURRENT_DATE(), CURRENT_TIME()), ADDTIME(CURRENT_DATE(), CURRENT_TIME())";
+        $sql = "INSERT INTO `issues` 
+        VALUES (DEFAULT, '".$title."', '".$description."', '".$type."', '".$priority."', 'open', ".$assigned_to.", ".$auth->user->uid.",  ADDTIME(CURRENT_DATE(), CURRENT_TIME()), ADDTIME(CURRENT_DATE(), CURRENT_TIME()))";
         $response = $db->insert($sql);
 
-    } else if ($content == 'new_user') {
+        if ($response) {
+            die('NEW_ISSUE_CREATED');
+        } else {
+            die('FAILED_TO_CREATE_ISSUE');
+        }
 
-        echo json_encode($_POST);
+
+    } else if ($content == 'new_user') {
         
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
@@ -47,12 +52,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response = $auth->login($email, $password);
         
         if ($response) {
-            echo include('./php/dashboard.php');
+            die("USER_LOGGED_IN");
         } else {
             die('INCORRECT_LOGIN_CREDENTIALS');
         }
             
         
+    } else if ($content == 'bug') {
+        $status = $_POST['status'];
+        $id = $_POST['id'];
+        $sql = "UPDATE `issues` SET status='".$status."', updated=ADDTIME(CURRENT_DATE(), CURRENT_TIME()) WHERE id=".(int)$id.""; 
+        $response = $db->insert($sql);
+        echo json_encode($response);
+        if ($response) {
+            die('SUCCESS');
+        } else {
+            die('FAILED_TO_UPDATE');
+        }
     } else {
         die('FORM_CONTEXT_REQUIRED');
     }
@@ -63,5 +79,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-
 ?>
+

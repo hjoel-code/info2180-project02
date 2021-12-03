@@ -1,25 +1,28 @@
-    <link rel="stylesheet" href="./php/css/new_user.css">
-    <script src="./php/new_user.js"></script>
-    <h1>New User</h1>
-    <form method="post" action="./routing.php" onsubmit="return validateform();">
+<link rel="stylesheet" href="./php/css/new_user.css">
     
-        <div class = "labels">
-            <label for="firstname">Firstname</label><br/>
-            <input name= "firstname" type="text" id="fname"/><br/> 
+    <h1 class="page-title">New User</h1>
+    <form id="new-user-form" method="post" action="#">
     
-            <label for="lastname">Lastname</label><br/>
-            <input name = "lastname" type="text" id="lname"/><br/>
+            <label for="firstname">Firstname</label>
+            <input name= "firstname" type="text" id="fname"/>
     
-            <label for="password">Password</label><br/>
-            <input name = "password" type="password" id="pass"/><br/> 
-
-            <label for="email">Email</label><br/>
-            <input name = "email" type="email" id="email"/><br/>
+            <label for="lastname">Lastname</label>
+            <input name = "lastname" type="text" id="lname"/>
+    
+            <label for="password">Password</label>
+            
+            <div class="password-input-container">
+                <input name = "password" type="password" id="pass"/>
+                <button id="togglePassword"><span><i class='fa fa-eye-slash'></i></span></button>
+            </div>
+            
+            <label for="email">Email</label>
+            <input name = "email" type="email" id="email"/>
 
             <input type="hidden" name="content" value="new_user">
 
-            <input type="submit" id="submit_form" value="Submit" />
-
-        </div>
+            <button type="submit" id="submit_form" value="Submit">Submit</button>
     </form>
 
+
+<script src="./php/js/new_user.js"></script>

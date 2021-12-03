@@ -1,3 +1,4 @@
+
 <?php 
 
 
@@ -5,8 +6,8 @@ class DatabaseSQL {
     public $conn = null;
 
     public $server = "localhost";
-    public $username = "project-2-group";
-    public $password = "project-2";
+    public $username = "project-final";
+    public $password = "password-final";
     public $db = "bugme";
 
     /**
